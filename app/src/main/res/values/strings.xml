@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">PetUnity</string>
     <string name="msg_tela_inicial">Doação e Adoção de Cães e Gatos.</string>
+    <string name="msm_titulo_tela_cadastro_usuario">Qual o seu nome?</string>
+    <string name="msm_tela_cadastro_usuario">Precisamos saber um pouco mais sobre você. Digite as informações necessárias para continarmos.</string>
+    <string name="msm_titulo_tela_cadastro_animal">Nos fale sobre ele.</string>
+    <string name="msm_tela_cadastro_animal">Digite as informações necessárias sobre o pet que queres doar para concluir.</string>
+    <string name="opcao_nome">Nome:</string>
+    <string name="opcao_email">E-Mail:</string>
+    <string name="opcao_telefone">Telefone:</string>
+    <string name="opcao_endereco">Edereço:</string>
+    <string name="opcao_raca">Raça:</string>
+    <string name="opcao_especie">Especie:</string>
+    <string name="opcao_sexo">Sexo:</string>
+    <string name="opcao_foto">Foto</string>
     <string name="btn_adotar">Adotar</string>
     <string name="btn_doar">Doar</string>
 </resources>

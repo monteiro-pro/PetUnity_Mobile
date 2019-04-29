@@ -1,0 +1,10 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/colorBackGround" />
+    <corners android:radius="4dp" />
+    <stroke android:width="100px" android:color="@android:color/black"/>
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/foto_cadastro_press"/>
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/foto_cadastro_press"/>
+    <item android:state_focused="true" android:state_pressed="false" android:drawable="@drawable/foto_cadastro"/>
+    <item android:state_focused="false" android:state_pressed="false" android:drawable="@drawable/foto_cadastro"/>
+</selector>

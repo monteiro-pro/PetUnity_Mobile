@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -6,6 +6,83 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    
+    <style name="Msm_Titulo">
+        <item name="android:textSize">40dp</item>
+        <item name="android:textColor">@color/colorAzulclaro</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Msm_texto">
+        <item name="android:textSize">18dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="texto_opcao">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorRoxoEscuro</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="texto_result_opcao">
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:textColor">@color/colorAzulclaro</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="texto_layout">
+        <item name="android:src">@drawable/texto_layout</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="texto_editor">
+        <item name="android:layout_marginLeft">60dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="layout_opcao">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="botao_padrao">
+        <item name="android:layout_width">280dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:color">@color/colorVerdeClaro</item>
+        <item name="android:background">@drawable/button_style_defout</item>
+    </style>
+
+    <style name="especie_layout_botao">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">45dp</item>
     </style>
 
 </resources>

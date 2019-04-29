@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CadastroUsuarioActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/msm_titulo_tela_cadastro_usuario"
+            style="@style/Msm_Titulo" />
+
+        <TextView
+            android:text="@string/msm_tela_cadastro_usuario"
+            style="@style/Msm_texto"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
+
+        <LinearLayout
+            style="@style/layout_opcao"
+            android:layout_marginTop="35dp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/texto_opcao"
+                    android:text="@string/opcao_nome" />
+
+                <ImageView
+                    style="@style/texto_layout" />
+
+                <EditText
+                    style="@style/texto_editor"
+                    android:text="José Monteiro da Silva"/>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_opcao">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/texto_opcao"
+                    android:text="@string/opcao_email" />
+
+                <ImageView
+                    style="@style/texto_layout" />
+
+                <EditText
+                    style="@style/texto_editor"
+                    android:text="teste@teste.com.br"/>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_opcao">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/texto_opcao"
+                    android:text="@string/opcao_telefone" />
+
+                <ImageView
+                    style="@style/texto_layout" />
+
+                <EditText
+                    style="@style/texto_editor"
+                    android:text="123456-78910"/>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_opcao">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/texto_opcao"
+                    android:text="@string/opcao_endereco" />
+
+                <ImageView
+                    style="@style/texto_layout" />
+
+                <EditText
+                    style="@style/texto_editor"
+                    android:text="Rua tal - Bairro tal."/>
+
+            </FrameLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btContinuar"
+        android:text="Continuar"
+        style="@style/botao_padrao">
+
+    </Button>
+
+</LinearLayout>
