@@ -178,7 +178,7 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/btContinuar"
+        android:id="@+id/btConcluir"
         android:text="Concluir"
         style="@style/botao_padrao">
 

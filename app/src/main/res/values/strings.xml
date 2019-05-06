@@ -15,4 +15,11 @@
     <string name="opcao_foto">Foto</string>
     <string name="btn_adotar">Adotar</string>
     <string name="btn_doar">Doar</string>
+    <string name="opcao_email_inferior">E-Mail</string>
+    <string name="opcao_telefone_inferior">Telefone</string>
+    <string name="opcao_raca__inferior">Raça</string>
+    <string name="opcao_especie_inferior">Especie</string>
+    <string name="opcao_sexo_inferior">Sexo</string>
+    <string name="opcao_nome_inferior">Nome</string>
+    <string name="opcao_endereco_inferior">Endereço</string>
 </resources>

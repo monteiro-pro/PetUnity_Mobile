@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerfilActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="50dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/imagem_perfil"/>
+
+                    <EditText
+                        style="@style/texto_nome_perfil_pet"
+                        android:text="Fuscão"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="30dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <EditText
+                            style="@style/texto_editor_perfil"
+                            android:text="Cachorro"/>
+
+                        <TextView
+                            style="@style/texto_opcao_perfil"
+                            android:text="@string/opcao_especie_inferior" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="15dp">
+
+                        <EditText
+                            style="@style/texto_editor_perfil"
+                            android:text="Vira - Lata"/>
+
+                        <TextView
+                            style="@style/texto_opcao_perfil"
+                            android:text="@string/opcao_raca__inferior" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="15dp">
+
+                        <EditText
+                            style="@style/texto_editor_perfil"
+                            android:text="Macho"/>
+
+                        <TextView
+                            style="@style/texto_opcao_perfil"
+                            android:text="@string/opcao_sexo_inferior" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    style="@style/texto_doador_perfil"
+                    android:text="Doador" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        style="@style/texto_editor_fazer_ligacao"
+                        android:text="Nome Tal Sobre Nome Tal"/>
+
+                    <TextView
+                        style="@style/texto_opcao"
+                        android:text="@string/opcao_nome_inferior" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="15dp">
+
+                    <EditText
+                        style="@style/texto_editor_fazer_ligacao"
+                        android:text="Rua Tal - Cidade Tal"/>
+
+                    <TextView
+                        style="@style/texto_opcao"
+                        android:text="@string/opcao_endereco_inferior" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/btAdotar"
+                            android:text="Adotar"
+                            style="@style/botao_padrao"
+                            android:layout_centerInParent="true">
+                        </Button>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

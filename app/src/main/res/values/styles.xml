@@ -61,6 +61,63 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="texto_editor_fazer_ligacao">
+        <item name="android:textSize">25dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="texto_editor_perfil">
+        <item name="android:textSize">20dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="texto_editor_listagem">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="texto_nome_perfil_pet">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorNomePet</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="texto_nome_listagem_pet">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/colorNomePet</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="texto_opcao_perfil">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/colorRoxoEscuro</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="texto_doador_perfil">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:background">@null</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="layout_opcao">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -83,6 +140,12 @@
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_width">70dp</item>
         <item name="android:layout_height">45dp</item>
+    </style>
+
+    <style name="imagem_perfil">
+        <item name="android:layout_width">160dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:background">@drawable/borda_imagem_perfil</item>
     </style>
 
 </resources>

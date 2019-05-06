@@ -5,20 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class CadastroAnimalActivity extends AppCompatActivity {
+public class PerfilActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_animal);
+        setContentView(R.layout.activity_perfil);
 
-        (findViewById(R.id.btConcluir)).setOnClickListener(concluirCadastro);
+        (findViewById(R.id.btAdotar)).setOnClickListener(entrarContato);
     }
 
-    View.OnClickListener concluirCadastro = new View.OnClickListener() {
+    View.OnClickListener entrarContato = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent it = new Intent(CadastroAnimalActivity.this, ListagemActivity.class);
+            Intent it = new Intent(PerfilActivity.this, FazerLigacaoActivity.class);
             startActivity(it);
         }
     };
