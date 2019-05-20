@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.example.petunity_mobile.DataBase.Create;
 import com.example.petunity_mobile.DataBase.DaoDB;
 import com.example.petunity_mobile.Model.Usuario;
+import com.example.petunity_mobile.Utils.MaskEditUtil;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
 
@@ -30,6 +31,8 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
         (findViewById(R.id.btContinuar)).setOnClickListener(cadastrarUsuario);
 
+        telefone.addTextChangedListener(MaskEditUtil.mask(telefone, MaskEditUtil.FORMAT_FONE));
+
         new Create().createTableUsuario();
     }
 
@@ -42,24 +45,39 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             usuario.setTelefone(telefone.getText().toString());
             usuario.setEndereco(endereco.getText().toString());
 
-            if(new DaoDB().insertUsuario(usuario)){
-                Toast.makeText(CadastroUsuarioActivity.this, "Usuário Cadastrado!", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(CadastroUsuarioActivity.this, CadastroAnimalActivity.class);
-                startActivity(it);
-                limparCampos();
+            if(verificarCampos()){
+                if(new DaoDB().insertUsuario(usuario)){
+                    Toast.makeText(CadastroUsuarioActivity.this, "Usuário Cadastrado!", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(CadastroUsuarioActivity.this, CadastroAnimalActivity.class);
+                    startActivity(it);
+                    (findViewById(R.id.btContinuar)).setEnabled(false);
+                    finish();
+                }
+                else{
+                    Toast.makeText(CadastroUsuarioActivity.this, "Erro: E-mail Já Cadastrado!", Toast.LENGTH_SHORT).show();
+                }
             }
             else{
-                Toast.makeText(CadastroUsuarioActivity.this, "Erro: E-mail Já Cadastrado!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CadastroUsuarioActivity.this, "Preencha Todos os Campos!", Toast.LENGTH_SHORT).show();
             }
 
-            new DaoDB().testarBanco();
+            new DaoDB().testarBancoUsuario();
         }
     };
 
-    private void limparCampos(){
-        nome.setText("");
-        email.setText("");
-        telefone.setText("");
-        endereco.setText("");
+    private boolean verificarCampos(){
+        if(!isNullOrEmpty(nome.getText().toString())
+        && !isNullOrEmpty(email.getText().toString())
+        && !isNullOrEmpty(telefone.getText().toString())
+        && !isNullOrEmpty(endereco.getText().toString())){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static boolean isNullOrEmpty(String s) {
+        return (s == null || s.equals(""));
     }
 }

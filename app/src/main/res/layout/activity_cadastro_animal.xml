@@ -52,6 +52,7 @@
                         android:text="@string/opcao_especie"/>
 
                     <TextView
+                        android:id="@+id/texto_result_especie"
                         android:text="Cachorro"
                         android:layout_marginLeft="80dp"
                         style="@style/texto_result_opcao"/>
@@ -65,10 +66,12 @@
                         android:layout_marginTop="10dp">
 
                         <Button
-                            android:background="@drawable/button_background_especie_dog"
+                            android:id="@+id/btnDog"
+                            android:background="@drawable/button_background_especie_dog_select"
                             style="@style/especie_layout_botao"/>
 
                         <Button
+                            android:id="@+id/btnCat"
                             android:background="@drawable/button_background_especie_cat"
                             style="@style/especie_layout_botao"/>
                     </LinearLayout>
@@ -95,11 +98,13 @@
                         android:layout_marginTop="10dp">
 
                         <Button
-                            android:background="@drawable/button_background_sexo_macho"
+                            android:id="@+id/btnMale"
+                            android:background="@drawable/button_background_sexo_macho_select"
                             style="@style/especie_layout_botao"/>
 
                         <Button
-                            android:background="@drawable/button_background_raca_femea"
+                            android:id="@+id/btnFemale"
+                            android:background="@drawable/button_background_sexo_femea"
                             style="@style/especie_layout_botao"/>
                         //</LinearLayout>
 
@@ -117,6 +122,7 @@
                         android:paddingTop="20dp">
 
                         <Button
+                            android:id="@+id/btnFoto"
                             android:layout_width="120dp"
                             android:layout_height="100dp"
                             android:background="@drawable/button_background_foto_cadastro"/>
@@ -136,8 +142,8 @@
                 style="@style/layout_opcao">
 
                 <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <TextView
                         style="@style/texto_opcao"
@@ -147,6 +153,7 @@
                         style="@style/texto_layout" />
 
                     <EditText
+                        android:id="@+id/edtNomeAnimal"
                         style="@style/texto_editor"
                         android:text="Fuscão"/>
 
@@ -157,8 +164,8 @@
                 style="@style/layout_opcao">
 
                 <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <TextView
                         style="@style/texto_opcao"
@@ -168,6 +175,7 @@
                         style="@style/texto_layout" />
 
                     <EditText
+                        android:id="@+id/edtRaca"
                         style="@style/texto_editor"
                         android:text="Vira - Lata"/>
 

@@ -8,15 +8,6 @@ public class Animal {
     private String Raca;
     private String Sexo;
 
-    public void Animal(){}
-
-    public Animal(String nome, String especie, String raca, String sexo) {
-        Nome = nome;
-        Especie = especie;
-        Raca = raca;
-        Sexo = sexo;
-    }
-
     public int getId() {
         return Id;
     }

@@ -11,4 +11,11 @@ public class Create {
         String query = "CREATE TABLE IF NOT EXISTS " + DataBaseOpenHelper.TABLE_USUARIO + coluns;
         db.execSQL(query);
     }
+
+    public void  createTableAnimal(){
+        SQLiteDatabase db = DataBaseOpenHelper.getInstance().getWritableDatabase();
+        String coluns = "( id INTEGER PRIMARY KEY autoincrement, nome varchar(30) NOT NULL, especie varchar(10) NOT NULL, raca varchar(20) NOT NULL, sexo varchar(10) NOT NULL )";
+        String query = "CREATE TABLE IF NOT EXISTS " + DataBaseOpenHelper.TABLE_ANIMAL + coluns;
+        db.execSQL(query);
+    }
 }

@@ -11,6 +11,7 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "pet_unity_mobile";
     public static final int VERSION_DB = 1;
     public  static  final String TABLE_USUARIO = "usuario";
+    public  static  final String TABLE_ANIMAL = "animal";
 
     private static DataBaseOpenHelper instance;
 
