@@ -12,10 +12,22 @@ public class Create {
         db.execSQL(query);
     }
 
+    public void  removeTableUsuario(){
+        SQLiteDatabase db = DataBaseOpenHelper.getInstance().getWritableDatabase();
+        String query = "DROP TABLE IF EXISTS " + DataBaseOpenHelper.TABLE_ANIMAL;
+        db.execSQL(query);
+    }
+
     public void  createTableAnimal(){
         SQLiteDatabase db = DataBaseOpenHelper.getInstance().getWritableDatabase();
-        String coluns = "( id INTEGER PRIMARY KEY autoincrement, nome varchar(30) NOT NULL, especie varchar(10) NOT NULL, raca varchar(20) NOT NULL, sexo varchar(10) NOT NULL )";
+        String coluns = "( id INTEGER PRIMARY KEY autoincrement, nome varchar(30) NOT NULL, especie varchar(10) NOT NULL, raca varchar(20) NOT NULL, sexo varchar(10) NOT NULL, foto varchar(500) )";
         String query = "CREATE TABLE IF NOT EXISTS " + DataBaseOpenHelper.TABLE_ANIMAL + coluns;
+        db.execSQL(query);
+    }
+
+    public void  removeTableAnimal(){
+        SQLiteDatabase db = DataBaseOpenHelper.getInstance().getWritableDatabase();
+        String query = "DROP TABLE IF EXISTS " + DataBaseOpenHelper.TABLE_ANIMAL;
         db.execSQL(query);
     }
 }

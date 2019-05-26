@@ -1,6 +1,9 @@
 package com.example.petunity_mobile;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -9,8 +12,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +37,9 @@ public class CadastroAnimalActivity extends AppCompatActivity {
     private TextView especie;
     private EditText raca;
     private TextView sexo;
+    private String foto;
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +69,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
             animal.setEspecie(especie.getText().toString());
             animal.setRaca(raca.getText().toString());
             animal.setSexo(sexo.getText().toString());
+            animal.setFoto(foto);
 
             if(new DaoDB().insertAnimal(animal)){
                 Toast.makeText(CadastroAnimalActivity.this, "Pet Cadastrado!", Toast.LENGTH_SHORT).show();
@@ -116,14 +125,35 @@ public class CadastroAnimalActivity extends AppCompatActivity {
     View.OnClickListener carregarFoto = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            String[] galleryPermissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            if (ContextCompat.checkSelfPermission(CadastroAnimalActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
+                // Permission is not granted
+                if (ActivityCompat.shouldShowRequestPermissionRationale(CadastroAnimalActivity.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    // Show an explanation to the user *asynchronously* -- don't block
+                    // this thread waiting for the user's response! After the user
+                    // sees the explanation, try again to request the permission.
+                } else {
+                    // No explanation needed; request the permission
+                    ActivityCompat.requestPermissions(CadastroAnimalActivity.this,
+                            galleryPermissions, 1);
+                }
+            }
+
             Intent intentPegaFoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
             startActivityForResult(Intent.createChooser(intentPegaFoto, "Selecione uma imagem"), 123);
         }
     };
 
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String teste = "dsdads";
         if(resultCode == CadastroAnimalActivity.this.RESULT_OK){
             if(requestCode == 123){
                 Uri imagemSelecionada = data.getData();
@@ -135,13 +165,13 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                //ImageButton eeee = (findViewById(R.id.btnFoto));
-                //eeee.setImageBitmap(bitmap);
-
                 Drawable d = new BitmapDrawable(getResources(),bitmap);
 
                 (findViewById(R.id.btnFoto)).setBackground(d);
 
+                File file = new File(getRealPathFromURI(imagemSelecionada));
+
+                foto = file.getPath();
 
                 /*Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 File f = new File(imagemSelecionada.getEncodedPath());

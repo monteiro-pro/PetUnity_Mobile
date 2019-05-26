@@ -103,6 +103,7 @@ public class DaoDB {
         contentValues.put("especie", animal.getEspecie());
         contentValues.put("raca", animal.getRaca());
         contentValues.put("sexo", animal.getSexo());
+        contentValues.put("foto", animal.getFoto());
 
         return dbWrit.insert(DataBaseOpenHelper.TABLE_ANIMAL, null, contentValues) != -1;
     }
@@ -150,6 +151,7 @@ public class DaoDB {
             Log.i("Teste", "Especie: " + result.getString(2));
             Log.i("Teste", "Raça: " + result.getString(3));
             Log.i("Teste", "Sexo: " + result.getString(4));
+            Log.i("Teste", "Foto: " + result.getString(5));
         }
     }
     // ----------------------------------------

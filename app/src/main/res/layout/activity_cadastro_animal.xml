@@ -121,11 +121,26 @@
                         android:layout_centerInParent="true"
                         android:paddingTop="20dp">
 
-                        <Button
-                            android:id="@+id/btnFoto"
-                            android:layout_width="120dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/button_background_foto_cadastro"/>
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <Button
+                                android:id="@+id/btnFoto"
+                                android:layout_width="104dp"
+                                android:layout_height="97dp"
+                                android:scaleType = "centerCrop"
+                                android:layout_gravity="center"
+                                android:background="@drawable/button_background_foto_cadastro"/>
+
+                            <ImageView
+                                android:layout_width="120dp"
+                                android:layout_height="100dp"
+                                android:background="@drawable/grig_foto_cadastro"/>
+
+                        </FrameLayout>
+
+
 
                         <TextView
                             style="@style/texto_opcao"

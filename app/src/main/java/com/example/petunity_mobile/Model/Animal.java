@@ -7,6 +7,7 @@ public class Animal {
     private String Especie;
     private String Raca;
     private String Sexo;
+    private String Foto;
 
     public int getId() {
         return Id;
@@ -46,5 +47,13 @@ public class Animal {
 
     public void setSexo(String sexo) {
         Sexo = sexo;
+    }
+
+    public String getFoto() {
+        return Foto;
+    }
+
+    public void setFoto(String foto) {
+        Foto = foto;
     }
 }

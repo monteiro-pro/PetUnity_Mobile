@@ -37,7 +37,8 @@ btnSend.setOnClickListener(new OnClickListener() {
     View.OnClickListener btnAdotarAction= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            Intent it = new Intent(MainActivity.this, ListagemActivity.class);
+            startActivity(it);
         }
     };
 }
