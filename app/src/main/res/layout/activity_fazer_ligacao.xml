@@ -32,9 +32,10 @@
                         android:orientation="vertical"
                         android:layout_centerInParent="true">
 
-                        <EditText
+                        <TextView
+                            android:id="@+id/tvEmalFazerLigacao"
                             style="@style/texto_editor_fazer_ligacao"
-                            android:text="Teste@teste.com.br"/>
+                            android:text="aaaa@aaaa.com.br"/>
 
                         <TextView
                             style="@style/texto_opcao"
@@ -48,10 +49,10 @@
                         android:orientation="vertical"
                         android:layout_marginTop="25dp">
 
-                        <EditText
-                            android:id="@+id/tvTelefone"
+                        <TextView
+                            android:id="@+id/tvTelefoneFazerLigacao"
                             style="@style/texto_editor_fazer_ligacao"
-                            android:text="(81) 9 9494-8679"/>
+                            android:text="(00) 0 0000-0000"/>
 
                         <TextView
                             style="@style/texto_opcao"

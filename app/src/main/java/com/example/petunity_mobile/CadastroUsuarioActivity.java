@@ -11,6 +11,7 @@ import com.example.petunity_mobile.DataBase.Create;
 import com.example.petunity_mobile.DataBase.DaoDB;
 import com.example.petunity_mobile.Model.Usuario;
 import com.example.petunity_mobile.Utils.MaskEditUtil;
+import com.example.petunity_mobile.Utils.StringUtils;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
 
@@ -47,8 +48,10 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
             if(verificarCampos()){
                 if(new DaoDB().insertUsuario(usuario)){
+                    Usuario usuarioDB = new DaoDB().selectUsuario();
                     Toast.makeText(CadastroUsuarioActivity.this, "Usuário Cadastrado!", Toast.LENGTH_SHORT).show();
                     Intent it = new Intent(CadastroUsuarioActivity.this, CadastroAnimalActivity.class);
+                    it.putExtra("usuario", usuarioDB);
                     startActivity(it);
                     (findViewById(R.id.btContinuar)).setEnabled(false);
                     finish();
@@ -66,18 +69,14 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     };
 
     private boolean verificarCampos(){
-        if(!isNullOrEmpty(nome.getText().toString())
-        && !isNullOrEmpty(email.getText().toString())
-        && !isNullOrEmpty(telefone.getText().toString())
-        && !isNullOrEmpty(endereco.getText().toString())){
+        if(!StringUtils.isNullOrEmpty(nome.getText().toString())
+        && !StringUtils.isNullOrEmpty(email.getText().toString())
+        && !StringUtils.isNullOrEmpty(telefone.getText().toString())
+        && !StringUtils.isNullOrEmpty(endereco.getText().toString())){
             return true;
         }
         else{
             return false;
         }
-    }
-
-    public static boolean isNullOrEmpty(String s) {
-        return (s == null || s.equals(""));
     }
 }

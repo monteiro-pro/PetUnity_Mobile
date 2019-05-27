@@ -1,8 +1,11 @@
 package com.example.petunity_mobile.Model;
 
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable {
 
     private int Id;
+    private int IdDono;
     private String Nome;
     private String Especie;
     private String Raca;
@@ -15,6 +18,14 @@ public class Animal {
 
     public void setId(int id) {
         Id = id;
+    }
+
+    public int getIdDono() {
+        return IdDono;
+    }
+
+    public void setIdDono(int idDono) {
+        IdDono = idDono;
     }
 
     public String getNome() {

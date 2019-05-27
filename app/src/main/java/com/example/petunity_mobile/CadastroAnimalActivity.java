@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.petunity_mobile.DataBase.Create;
 import com.example.petunity_mobile.DataBase.DaoDB;
 import com.example.petunity_mobile.Model.Animal;
+import com.example.petunity_mobile.Model.Usuario;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
     private EditText raca;
     private TextView sexo;
     private String foto;
+    private int idDono;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -49,6 +51,10 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         especie = findViewById(R.id.texto_result_especie);
         raca = findViewById(R.id.edtRaca);
         sexo = findViewById(R.id.texto_result_sexo);
+
+        Usuario usuario = (Usuario) getIntent().getExtras().getSerializable("usuario");
+
+        idDono = usuario.getId();
 
         (findViewById(R.id.btConcluir)).setOnClickListener(concluirCadastro);
         (findViewById(R.id.btnDog)).setOnClickListener(mudarEspecieDog);
@@ -70,6 +76,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
             animal.setRaca(raca.getText().toString());
             animal.setSexo(sexo.getText().toString());
             animal.setFoto(foto);
+            animal.setIdDono(idDono);
 
             if(new DaoDB().insertAnimal(animal)){
                 Toast.makeText(CadastroAnimalActivity.this, "Pet Cadastrado!", Toast.LENGTH_SHORT).show();
@@ -107,7 +114,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
     View.OnClickListener mudarSexoMale = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            sexo.setText("Macho");
+            sexo.setText(R.string.sexo_macho);
             (findViewById(R.id.btnFemale)).setBackgroundResource(R.drawable.button_background_sexo_femea);
             (findViewById(R.id.btnMale)).setBackgroundResource(R.drawable.button_background_sexo_macho_select);
         }
@@ -116,7 +123,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
     View.OnClickListener mudarSexoFemale = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            sexo.setText("Fêmea");
+            sexo.setText(R.string.sexo_femea);
             (findViewById(R.id.btnFemale)).setBackgroundResource(R.drawable.button_background_sexo_femea_select);
             (findViewById(R.id.btnMale)).setBackgroundResource(R.drawable.button_background_sexo_macho);
         }
@@ -157,7 +164,6 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         if(resultCode == CadastroAnimalActivity.this.RESULT_OK){
             if(requestCode == 123){
                 Uri imagemSelecionada = data.getData();
-                //Bitmap bitmap = BitmapFactory.decodeFile(String.valueOf(imagemSelecionada));
                 Bitmap bitmap = null;
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imagemSelecionada);

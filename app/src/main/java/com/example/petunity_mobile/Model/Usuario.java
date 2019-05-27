@@ -1,6 +1,8 @@
 package com.example.petunity_mobile.Model;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     private int Id;
     private String Nome;

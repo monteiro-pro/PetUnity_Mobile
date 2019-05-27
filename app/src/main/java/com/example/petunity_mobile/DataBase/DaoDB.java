@@ -47,6 +47,39 @@ public class DaoDB {
         return dbWrit.update(DataBaseOpenHelper.TABLE_USUARIO, contentValues, where,null) > 0;
     }
 
+    public Usuario selectUsuario(){
+        Cursor result = dbRead.query(DataBaseOpenHelper.TABLE_USUARIO, null, null, null, null, null, null);
+        Usuario usuario = new Usuario();
+
+        while (result.moveToLast()) {
+            usuario.setId(Integer.parseInt(result.getString(0)));
+            usuario.setNome(result.getString(1));
+            usuario.setEmail(result.getString(2));
+            usuario.setTelefone(result.getString(3));
+            usuario.setEndereco(result.getString(4));
+            break;
+        }
+        result.close();
+        return usuario;
+    }
+
+    public Usuario selectUsuario(int id){
+        String where = "id = " + id;
+        Cursor result = dbRead.query(DataBaseOpenHelper.TABLE_USUARIO, null, where, null, null, null, null);
+        Usuario usuario = new Usuario();
+
+        while (result.moveToFirst()) {
+            usuario.setId(Integer.parseInt(result.getString(0)));
+            usuario.setNome(result.getString(1));
+            usuario.setEmail(result.getString(2));
+            usuario.setTelefone(result.getString(3));
+            usuario.setEndereco(result.getString(4));
+            break;
+        }
+        result.close();
+        return usuario;
+    }
+
     public ArrayList<Usuario> listUsuarios() {
         Cursor result = dbRead.query(DataBaseOpenHelper.TABLE_USUARIO, null, null, null, null, null, null);
         ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -104,6 +137,7 @@ public class DaoDB {
         contentValues.put("raca", animal.getRaca());
         contentValues.put("sexo", animal.getSexo());
         contentValues.put("foto", animal.getFoto());
+        contentValues.put("idDono", animal.getIdDono());
 
         return dbWrit.insert(DataBaseOpenHelper.TABLE_ANIMAL, null, contentValues) != -1;
     }
@@ -114,10 +148,31 @@ public class DaoDB {
         contentValues.put("especie", animal.getEspecie());
         contentValues.put("raca", animal.getRaca());
         contentValues.put("sexo", animal.getSexo());
+        contentValues.put("foto", animal.getFoto());
+        contentValues.put("idDono", animal.getIdDono());
 
         String where = "id = " + animal.getId();
 
         return dbWrit.update(DataBaseOpenHelper.TABLE_ANIMAL, contentValues, where,null) > 0;
+    }
+
+    public Animal selectAnimal(int id){
+        String where = "id = " + id;
+        Cursor result = dbRead.query(DataBaseOpenHelper.TABLE_ANIMAL, null, where, null, null, null, null);
+        Animal animal = new Animal();
+
+        while (result.moveToFirst()) {
+            animal.setId(Integer.parseInt(result.getString(0)));
+            animal.setNome(result.getString(1));
+            animal.setEspecie(result.getString(2));
+            animal.setRaca(result.getString(3));
+            animal.setSexo(result.getString(4));
+            animal.setFoto(result.getString(5));
+            animal.setIdDono(Integer.parseInt(result.getString(6)));
+            break;
+        }
+        result.close();
+        return animal;
     }
 
     public ArrayList<Animal> listAnimais() {
@@ -131,6 +186,8 @@ public class DaoDB {
             animal.setEspecie(result.getString(2));
             animal.setRaca(result.getString(3));
             animal.setSexo(result.getString(4));
+            animal.setFoto(result.getString(5));
+            animal.setIdDono(Integer.parseInt(result.getString(6)));
             animais.add(animal);
         }
         result.close();
@@ -152,6 +209,7 @@ public class DaoDB {
             Log.i("Teste", "Raça: " + result.getString(3));
             Log.i("Teste", "Sexo: " + result.getString(4));
             Log.i("Teste", "Foto: " + result.getString(5));
+            Log.i("Teste", "IdDono: " + result.getString(6));
         }
     }
     // ----------------------------------------
