@@ -14,9 +14,11 @@ import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,7 @@ import com.example.petunity_mobile.DataBase.Create;
 import com.example.petunity_mobile.DataBase.DaoDB;
 import com.example.petunity_mobile.Model.Animal;
 import com.example.petunity_mobile.Model.Usuario;
+import com.example.petunity_mobile.Utils.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,6 +43,12 @@ public class CadastroAnimalActivity extends AppCompatActivity {
     private TextView sexo;
     private String foto;
     private int idDono;
+    private Button remover;
+
+    private AlertDialog alerta;
+
+    private Animal animalEditar;
+    private Usuario usuarioCadastro;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -51,12 +60,55 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         especie = findViewById(R.id.texto_result_especie);
         raca = findViewById(R.id.edtRaca);
         sexo = findViewById(R.id.texto_result_sexo);
+        remover = findViewById(R.id.btRemover);
 
-        Usuario usuario = (Usuario) getIntent().getExtras().getSerializable("usuario");
+        usuarioCadastro = (Usuario) getIntent().getExtras().getSerializable("usuario");
 
-        idDono = usuario.getId();
+        if(usuarioCadastro != null){
+            idDono = usuarioCadastro.getId();
+            remover.setText("Cancelar");
+            (findViewById(R.id.btConcluir)).setOnClickListener(concluirCadastro);
+            (findViewById(R.id.btRemover)).setOnClickListener(cancelar);
+        }
 
-        (findViewById(R.id.btConcluir)).setOnClickListener(concluirCadastro);
+        animalEditar = (Animal) getIntent().getExtras().getSerializable("animalEditar");
+
+        if(animalEditar != null){
+            nome.setText(animalEditar.getNome());
+            especie.setText(animalEditar.getEspecie());
+            raca.setText(animalEditar.getRaca());
+            sexo.setText(animalEditar.getSexo());
+
+            if(!StringUtils.isNullOrEmpty(animalEditar.getFoto())){
+                String fotoPath = animalEditar.getFoto();
+                Bitmap mBitmap = BitmapFactory.decodeFile(fotoPath);
+
+                Drawable d = new BitmapDrawable(getResources(),mBitmap);
+                (findViewById(R.id.btnFoto)).setBackground(d);
+            }
+
+            if(animalEditar.getEspecie().equals("Cachorro")){
+                (findViewById(R.id.btnDog)).setBackground(getResources().getDrawable(R.drawable.especie_dog));
+                (findViewById(R.id.btnCat)).setBackground(getResources().getDrawable(R.drawable.especie_cat_press));
+            }
+            else{
+                (findViewById(R.id.btnCat)).setBackground(getResources().getDrawable(R.drawable.especie_cat));
+                (findViewById(R.id.btnDog)).setBackground(getResources().getDrawable(R.drawable.especie_dog_press));
+            }
+
+            if(animalEditar.getSexo().equals("Macho")){
+                (findViewById(R.id.btnMale)).setBackground(getResources().getDrawable(R.drawable.sexo_macho));
+                (findViewById(R.id.btnFemale)).setBackground(getResources().getDrawable(R.drawable.sexo_femea_press));
+            }
+            else{
+                (findViewById(R.id.btnFemale)).setBackground(getResources().getDrawable(R.drawable.sexo_femea));
+                (findViewById(R.id.btnMale)).setBackground(getResources().getDrawable(R.drawable.sexo_macho_press));
+            }
+
+            (findViewById(R.id.btConcluir)).setOnClickListener(atualizarCadastro);
+            (findViewById(R.id.btRemover)).setOnClickListener(removerPet);
+        }
+
         (findViewById(R.id.btnDog)).setOnClickListener(mudarEspecieDog);
         (findViewById(R.id.btnCat)).setOnClickListener(mudarEspecieCat);
         (findViewById(R.id.btnMale)).setOnClickListener(mudarSexoMale);
@@ -90,6 +142,49 @@ public class CadastroAnimalActivity extends AppCompatActivity {
             }
 
             new DaoDB().testarBancoAnimal();
+        }
+    };
+
+    View.OnClickListener atualizarCadastro = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            animalEditar.setNome(nome.getText().toString());
+            animalEditar.setEspecie(especie.getText().toString());
+            animalEditar.setRaca(raca.getText().toString());
+            animalEditar.setSexo(sexo.getText().toString());
+            //animalEditar.setFoto(foto);
+            animalEditar.setIdDono(animalEditar.getIdDono());
+
+            if(new DaoDB().updateAnimal(animalEditar)){
+                Toast.makeText(CadastroAnimalActivity.this, "Informações Atualizadas!", Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(CadastroAnimalActivity.this, ListagemActivity.class);
+                startActivity(it);
+                (findViewById(R.id.btConcluir)).setEnabled(false);
+                finish();
+            }
+            else{
+                Toast.makeText(CadastroAnimalActivity.this, "Erro na atualização do Pet!", Toast.LENGTH_SHORT).show();
+            }
+
+            new DaoDB().testarBancoAnimal();
+        }
+    };
+
+    View.OnClickListener cancelar = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            new DaoDB().removeUsuario(usuarioCadastro);
+            Intent it = new Intent(CadastroAnimalActivity.this, MainActivity.class);
+            startActivity(it);
+            (findViewById(R.id.btRemover)).setEnabled(false);
+            finish();
+        }
+    };
+
+    View.OnClickListener removerPet = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            alert_remover();
         }
     };
 
@@ -134,14 +229,9 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         public void onClick(View v) {
             String[] galleryPermissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
             if (ContextCompat.checkSelfPermission(CadastroAnimalActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
-                // Permission is not granted
                 if (ActivityCompat.shouldShowRequestPermissionRationale(CadastroAnimalActivity.this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    // Show an explanation to the user *asynchronously* -- don't block
-                    // this thread waiting for the user's response! After the user
-                    // sees the explanation, try again to request the permission.
                 } else {
-                    // No explanation needed; request the permission
                     ActivityCompat.requestPermissions(CadastroAnimalActivity.this,
                             galleryPermissions, 1);
                 }
@@ -151,6 +241,45 @@ public class CadastroAnimalActivity extends AppCompatActivity {
             startActivityForResult(Intent.createChooser(intentPegaFoto, "Selecione uma imagem"), 123);
         }
     };
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void alert_remover() {
+        LayoutInflater li = getLayoutInflater();
+
+        View view = li.inflate(R.layout.alert_remove_pet, null);
+        view.findViewById(R.id.btnAlertConfirmar).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                alerta.dismiss();
+
+                new DaoDB().removeAnimal(animalEditar);
+                Toast.makeText(CadastroAnimalActivity.this, "Pet Removido!", Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(CadastroAnimalActivity.this, ListagemActivity.class);
+                startActivity(it);
+                (findViewById(R.id.btRemover)).setEnabled(false);
+                finish();
+            }
+        });
+
+        view.findViewById(R.id.btnAlertNegar).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                alerta.dismiss();
+            }
+        });
+
+        if(!StringUtils.isNullOrEmpty(animalEditar.getFoto())){
+            String fotoPath = animalEditar.getFoto();
+            Bitmap mBitmap = BitmapFactory.decodeFile(fotoPath);
+
+            Drawable d = new BitmapDrawable(getResources(),mBitmap);
+            (findViewById(R.id.imvAlert)).setBackground(d);
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Remover Registro?");
+        builder.setView(view);
+        alerta = builder.create();
+        alerta.show();
+    }
 
     public String getRealPathFromURI(Uri uri) {
         Cursor cursor = getContentResolver().query(uri, null, null, null, null);

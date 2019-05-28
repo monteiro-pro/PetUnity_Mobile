@@ -131,14 +131,24 @@
     </style>
 
     <style name="botao_padrao">
-        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textSize">28dp</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:color">@color/colorVerdeClaro</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:background">@drawable/button_style_defout</item>
+    </style>
+
+    <style name="botao_editar">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/button_style_edit</item>
     </style>
 
     <style name="especie_layout_botao">

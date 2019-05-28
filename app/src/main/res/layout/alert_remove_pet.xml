@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ImageView
+        android:id="@+id/imvAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/foto_cadastro_press" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="25dp">
+
+        <Button
+            android:id="@+id/btnAlertNegar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:text="Cancelar"
+            android:background="@color/colorAccent"/>
+
+        <Button
+            android:id="@+id/btnAlertConfirmar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:background="@color/colorVerdeClaro"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

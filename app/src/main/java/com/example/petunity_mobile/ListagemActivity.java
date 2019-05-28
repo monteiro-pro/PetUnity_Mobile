@@ -35,10 +35,10 @@ public class ListagemActivity extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Animal currentAnimal = list.get(position);
-                    Intent it = new Intent(ListagemActivity.this, PerfilActivity.class);
-                    it.putExtra("animal", currentAnimal);
-                    startActivity(it);
+                Animal currentAnimal = list.get(position);
+                Intent it = new Intent(ListagemActivity.this, PerfilActivity.class);
+                it.putExtra("animal", currentAnimal);
+                startActivity(it);
                 }
             });
         }

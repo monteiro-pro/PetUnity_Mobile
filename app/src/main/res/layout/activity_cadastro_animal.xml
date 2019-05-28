@@ -200,12 +200,30 @@
         </LinearLayout>
     </FrameLayout>
 
-    <Button
-        android:id="@+id/btConcluir"
-        android:text="Concluir"
-        style="@style/botao_padrao">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    </Button>
+            <Button
+                android:id="@+id/btRemover"
+                android:text="Remover"
+                style="@style/botao_padrao"
+                android:gravity="center"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/button_style_remove">
 
+            </Button>
+
+        <Button
+            android:id="@+id/btConcluir"
+            android:text="Concluir"
+            style="@style/botao_padrao"
+            android:gravity="center">
+
+        </Button>
+
+    </LinearLayout>
 
 </LinearLayout>

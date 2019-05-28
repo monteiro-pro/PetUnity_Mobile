@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
@@ -42,6 +43,7 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView endereco;
 
     private Usuario usuario;
+    private Animal animal;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -58,7 +60,7 @@ public class PerfilActivity extends AppCompatActivity {
         nomeDono = findViewById(R.id.tvNomeDono);
         endereco = findViewById(R.id.tvEndereco);
 
-        Animal animal = (Animal) getIntent().getExtras().getSerializable("animal");
+        animal = (Animal) getIntent().getExtras().getSerializable("animal");
 
         nome.setText(animal.getNome());
         especie.setText(animal.getEspecie());
@@ -80,14 +82,51 @@ public class PerfilActivity extends AppCompatActivity {
         }
 
         (findViewById(R.id.btAdotar)).setOnClickListener(entrarContato);
+
+        (findViewById(R.id.btnEditar)).setOnClickListener(editar);
+
     }
 
     View.OnClickListener entrarContato = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent it = new Intent(PerfilActivity.this, FazerLigacaoActivity.class);
-            it.putExtra("usuario", usuario);
-            startActivity(it);
+            if(testClique(1000)){
+                Intent it = new Intent(PerfilActivity.this, FazerLigacaoActivity.class);
+                it.putExtra("usuario", usuario);
+                startActivity(it);
+            }
         }
     };
+
+    View.OnClickListener editar = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent it = new Intent(PerfilActivity.this, CadastroAnimalActivity.class);
+            it.putExtra("animalEditar", animal);
+            startActivity(it);
+            (findViewById(R.id.btnEditar)).setEnabled(false);
+            finish();
+        }
+    };
+
+    private static int clk = 0;
+
+    public static boolean testClique(int ms) {
+
+        Handler handler = new Handler();
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                clk = 0;
+            }
+        };
+
+        if (clk == 0) {
+            clk = 1;
+            handler.postDelayed(r, ms);
+            return true;
+        }
+        handler.postDelayed(r, 1000);
+        return false;
+    }
 }
