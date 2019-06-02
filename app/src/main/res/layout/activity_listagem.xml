@@ -26,17 +26,22 @@
                 android:layout_height="wrap_content">
 
                 <Button
+                    android:id="@+id/btnListarTodos"
                     style="@style/texto_editor_listagem"
                     android:text="Todos"
                     android:layout_marginLeft="15dp"
-                    android:textColor="@color/colorNomePet"/>
+                    android:textColor="@drawable/button_style_listagem_focus" />
                 <Button
+                    android:id="@+id/btnListarCachorro"
                     style="@style/texto_editor_listagem"
                     android:text="Cachorro"
+                    android:textColor="@drawable/button_style_listagem"
                     android:layout_centerInParent="true"/>
                 <Button
+                    android:id="@+id/btnListarGato"
                     style="@style/texto_editor_listagem"
                     android:text="Gato"
+                    android:textColor="@drawable/button_style_listagem"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="15dp"/>
             </RelativeLayout>

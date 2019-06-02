@@ -22,16 +22,18 @@
 
                 <ImageView
                     android:id="@+id/btnPerfil"
-                    android:layout_width="118dp"
-                    android:layout_height="110dp"
+                    android:layout_width="117dp"
+                    android:layout_height="121dp"
                     android:background="@drawable/button_background_foto_listagem"
-                    android:stateListAnimator="@null" />
+                    android:stateListAnimator="@null"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="1dp"/>
 
                 <ImageView
                     android:id="@+id/imvEspecieList"
-                    android:background="@drawable/imagem_listagem_dog"
+                    android:background="@drawable/imagem_listagem_cat"
                     android:scaleType = "centerCrop"
-                    android:layout_height="112dp"
+                    android:layout_height="132dp"
                     android:layout_width="160dp"/>
 
             </FrameLayout>
@@ -63,7 +65,8 @@
                     <TextView
                         android:id="@+id/edtRacaList"
                         style="@style/texto_editor_listagem"
-                        android:text="Vira - Lata"/>
+                        android:text="Vira - Lata"
+                        android:layout_marginTop="4dp"/>
 
 
                 </LinearLayout>
@@ -72,7 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="8dp">
 
                     <ImageView
                         android:id="@+id/imvSexoList"

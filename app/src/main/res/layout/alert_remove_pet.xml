@@ -6,10 +6,11 @@
 
     <ImageView
         android:id="@+id/imvAlert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
-        android:src="@drawable/foto_cadastro_press" />
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,18 +21,27 @@
 
         <Button
             android:id="@+id/btnAlertNegar"
-            android:layout_width="150dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:text="Cancelar"
-            android:background="@color/colorAccent"/>
+            android:textAllCaps="false"
+            android:textColor="@color/colorBackGround"
+            android:background="@drawable/button_style_remove"
+            android:layout_marginLeft="30dp"/>
 
         <Button
             android:id="@+id/btnAlertConfirmar"
-            android:layout_width="150dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
             android:text="OK"
-            android:background="@color/colorVerdeClaro"/>
+            android:textColor="@color/colorBackGround"
+            android:background="@drawable/button_style_defout"/>
 
 
     </LinearLayout>

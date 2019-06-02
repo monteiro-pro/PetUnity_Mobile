@@ -28,6 +28,7 @@ import com.example.petunity_mobile.Utils.StringUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AnimalAdapter extends BaseAdapter {
 
@@ -109,6 +110,12 @@ public class AnimalAdapter extends BaseAdapter {
         }
 
         return convertView;
+    }
+
+    public void updateList(List<Animal> newList) {
+        list.clear();
+        list.addAll(newList);
+        notifyDataSetChanged();
     }
 
     private static class ViewHolder {

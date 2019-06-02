@@ -194,6 +194,46 @@ public class DaoDB {
         return animais;
     }
 
+    public ArrayList<Animal> listAnimaisCachorro() {
+        String where = "especie = 'Cachorro'";
+        Cursor result = dbRead.query(DataBaseOpenHelper.TABLE_ANIMAL, null, where, null, null, null, null);
+        ArrayList<Animal> animais = new ArrayList<>();
+
+        while (result.moveToNext()) {
+            Animal animal = new Animal();
+            animal.setId(Integer.parseInt(result.getString(0)));
+            animal.setNome(result.getString(1));
+            animal.setEspecie(result.getString(2));
+            animal.setRaca(result.getString(3));
+            animal.setSexo(result.getString(4));
+            animal.setFoto(result.getString(5));
+            animal.setIdDono(Integer.parseInt(result.getString(6)));
+            animais.add(animal);
+        }
+        result.close();
+        return animais;
+    }
+
+    public ArrayList<Animal> listAnimaisGato() {
+        String where = "especie = 'Gato'";
+        Cursor result = dbRead.query(DataBaseOpenHelper.TABLE_ANIMAL, null, where, null, null, null, null);
+        ArrayList<Animal> animais = new ArrayList<>();
+
+        while (result.moveToNext()) {
+            Animal animal = new Animal();
+            animal.setId(Integer.parseInt(result.getString(0)));
+            animal.setNome(result.getString(1));
+            animal.setEspecie(result.getString(2));
+            animal.setRaca(result.getString(3));
+            animal.setSexo(result.getString(4));
+            animal.setFoto(result.getString(5));
+            animal.setIdDono(Integer.parseInt(result.getString(6)));
+            animais.add(animal);
+        }
+        result.close();
+        return animais;
+    }
+
     public boolean removeAnimal(Animal animal){
         String where = "id = " + animal.getId();
         return dbWrit.delete(DataBaseOpenHelper.TABLE_ANIMAL, where,null) > 0;

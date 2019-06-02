@@ -7,7 +7,9 @@
     <color name="colorAzulclaro">#699CE9</color>
     <color name="colorRoxoEscuro">#6B0B52</color>
     <color name="colorVerdeClaro">#2DF370</color>
+    <color name="colorVerde">#19F48B</color>
     <color name="colorNomePet">#EB2B90</color>
     <color name="colorImagemPerfil">#C4C4C4</color>
     <color name="colorBordaPerfil">#C17CB2</color>
+    <color name="colorBlack">#000000</color>
 </resources>

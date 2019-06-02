@@ -1,6 +1,7 @@
 package com.example.petunity_mobile;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -157,8 +158,6 @@ public class CadastroAnimalActivity extends AppCompatActivity {
 
             if(new DaoDB().updateAnimal(animalEditar)){
                 Toast.makeText(CadastroAnimalActivity.this, "Informações Atualizadas!", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(CadastroAnimalActivity.this, ListagemActivity.class);
-                startActivity(it);
                 (findViewById(R.id.btConcluir)).setEnabled(false);
                 finish();
             }
@@ -182,6 +181,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
     };
 
     View.OnClickListener removerPet = new View.OnClickListener() {
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public void onClick(View v) {
             alert_remover();
@@ -252,6 +252,10 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                 alerta.dismiss();
 
                 new DaoDB().removeAnimal(animalEditar);
+
+                Usuario donoAnimal = new  DaoDB().selectUsuario(animalEditar.getIdDono());
+                new DaoDB().removeUsuario(donoAnimal);
+
                 Toast.makeText(CadastroAnimalActivity.this, "Pet Removido!", Toast.LENGTH_SHORT).show();
                 Intent it = new Intent(CadastroAnimalActivity.this, ListagemActivity.class);
                 startActivity(it);
@@ -271,7 +275,10 @@ public class CadastroAnimalActivity extends AppCompatActivity {
             Bitmap mBitmap = BitmapFactory.decodeFile(fotoPath);
 
             Drawable d = new BitmapDrawable(getResources(),mBitmap);
-            (findViewById(R.id.imvAlert)).setBackground(d);
+            view.findViewById(R.id.imvAlert).setBackground(d);
+        } else {
+            Drawable image = getResources().getDrawable(R.drawable.borda_listagem);
+            view.findViewById(R.id.imvAlert).setBackground(image);
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
